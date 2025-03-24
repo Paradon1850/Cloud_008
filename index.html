@@ -1,2 +1,75 @@
-    print("Hello World 001");
-    print("Hello World 001");
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>นับจำนวนคลิกเมาส์</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        #counter {
+            font-size: 30px;
+            margin-top: 20px;
+        }
+        #startButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #timer {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>นับจำนวนคลิกเมาส์ในเวลาที่กำหนด</h1>
+    <button id="startButton">เริ่มนับ</button>
+    <div id="counter">จำนวนคลิก: 0</div>
+    <div id="timer">เวลา: 0</div>
+
+    <script>
+        let clickCount = 0;
+        let timer = 10; 
+        let isCounting = false;
+        let interval;
+        
+        const startButton = document.getElementById('startButton');
+        const counterDisplay = document.getElementById('counter');
+        const timerDisplay = document.getElementById('timer');
+
+        startButton.addEventListener('click', startCounting);
+
+        function startCounting() {
+            if (isCounting) return; 
+            isCounting = true;
+            clickCount = 0;
+            counterDisplay.textContent = `จำนวนคลิก: ${clickCount}`;
+            timer = 10; 
+            timerDisplay.textContent = `เวลา: ${timer}`;
+
+            interval = setInterval(function() {
+                timer--;
+                timerDisplay.textContent = `เวลา: ${timer}`;
+                if (timer <= 0) {
+                    clearInterval(interval);
+                    alert(`หมดเวลา! คุณคลิกเมาส์ได้ ${clickCount} ครั้ง`);
+                    isCounting = false;
+                }
+            }, 1000);
+
+            document.addEventListener('click', countClicks);
+        }
+
+        function countClicks() {
+            if (isCounting) {
+                clickCount++;
+                counterDisplay.textContent = `จำนวนคลิก: ${clickCount}`;
+            }
+        }
+    </script>
+</body>
+</html>
