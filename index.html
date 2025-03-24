@@ -58,6 +58,7 @@
                     clearInterval(interval);
                     alert(`หมดเวลา! คุณคลิกเมาส์ได้ ${clickCount} ครั้ง`);
                     isCounting = false;
+                    location.reload(); // รีเฟรชหน้าเว็บ
                 }
             }, 1000);
 
