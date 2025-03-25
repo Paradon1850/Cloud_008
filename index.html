@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>นับจำนวนคลิกเมาส์</title>
+    <title>HOW MANY TIME YOU CAN CLICK</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -26,10 +26,10 @@
     </style>
 </head>
 <body>
-    <h1>นับจำนวนคลิกเมาส์ในเวลาที่กำหนด</h1>
-    <button id="startButton">เริ่มนับ</button>
-    <div id="counter">จำนวนคลิก: 0</div>
-    <div id="timer">เวลา: 0</div>
+    <h1>HOW FAST OF YOU CLICKING</h1>
+    <button id="startButton">WANNA START ?</button>
+    <div id="counter">COUNT : 0</div>
+    <div id="timer">TIME : 0</div>
 
     <script>
         let clickCount = 0;
@@ -47,16 +47,16 @@
             if (isCounting) return; 
             isCounting = true;
             clickCount = 0;
-            counterDisplay.textContent = `จำนวนคลิก: ${clickCount}`;
+            counterDisplay.textContent = `COUNT : ${clickCount}`;
             timer = 10; 
-            timerDisplay.textContent = `เวลา: ${timer}`;
+            timerDisplay.textContent = `TIME : ${timer}`;
 
             interval = setInterval(function() {
                 timer--;
-                timerDisplay.textContent = `เวลา: ${timer}`;
+                timerDisplay.textContent = `TIME : ${timer}`;
                 if (timer <= 0) {
                     clearInterval(interval);
-                    alert(`หมดเวลา! คุณคลิกเมาส์ได้ ${clickCount} ครั้ง`);
+                    alert(`TIME OUT! YOUR SCORE IS ${clickCount} TIMES`);
                     isCounting = false;
                     location.reload();
                 }
@@ -68,7 +68,7 @@
         function countClicks() {
             if (isCounting) {
                 clickCount++;
-                counterDisplay.textContent = `จำนวนคลิก: ${clickCount}`;
+                counterDisplay.textContent = `TIME : ${clickCount}`;
             }
         }
     </script>
